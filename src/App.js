@@ -13,6 +13,9 @@ export default class App extends Component {
   render() {
     return (
       <div className='App'>
+        <header>
+          Favorites App
+        </header>
         <Router>
           <Switch>
             <Route exact path='/' component={Search} />
