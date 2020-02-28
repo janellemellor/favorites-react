@@ -9,7 +9,9 @@ export default class Search extends Component {
         input: '',
     }
 
-    handleSearch = async () => {
+    handleSearch = async (e) => {
+        e.preventDefault();
+
         const rickAndMortyData = await request.get(`https://peaceful-brushlands-52117.herokuapp.com/api/characters/?search=${this.state.input}`)
 
         console.log(rickAndMortyData.body)
@@ -20,9 +22,11 @@ export default class Search extends Component {
     render() {
         return (
             <div>
-                <input value={this.state.input} onChange={(e) => this.setState({ input: e.target.value })} />
-                <button onClick={this.handleSearch}>Search!</button>
-                <List characters={this.state.characters} />
+                <form onSubmit={this.handleSearch} >
+                    <input value={this.state.input} onChange={(e) => this.setState({ input: e.target.value })} />
+                    <button onClick={this.handleSearch}>Search!</button>
+                    <List characters={this.state.characters} />
+                </form>
             </div>
         )
     }

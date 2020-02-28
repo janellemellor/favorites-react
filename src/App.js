@@ -10,6 +10,10 @@ import Favorites from './Favorites';
 
 
 export default class App extends Component {
+  state = {
+    user: null
+  }
+
   render() {
     return (
       <div className='App'>
